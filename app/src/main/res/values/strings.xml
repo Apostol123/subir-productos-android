@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SubirProductosAMiTienda</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="errorSoloLetras">El campo solo accepta  letras [a-zA-Z]</string>
+</resources>

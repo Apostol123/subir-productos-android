@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "673947685853",
+    "firebase_url": "https://subirproductosamitienda.firebaseio.com",
+    "project_id": "subirproductosamitienda",
+    "storage_bucket": "subirproductosamitienda.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673947685853:android:4cf51aacd5da7709",
+        "android_client_info": {
+          "package_name": "com.example.subirproductosamitienda"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673947685853-s4tkf9g9uq6vrp6i72k94cpetbrv3aaj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.subirproductosamitienda",
+            "certificate_hash": "9da69775763c83d0e316f46799c2e1b7f1d8ecde"
+          }
+        },
+        {
+          "client_id": "673947685853-tpfjpca36rnd7eundfnqpi24d77jcm0a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBs1b9AW3ZY0Vrljy6WTVs6PtGnEz1-pWk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673947685853-tpfjpca36rnd7eundfnqpi24d77jcm0a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
