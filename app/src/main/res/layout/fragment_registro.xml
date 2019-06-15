@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vista.LoginScreen"
+    tools:context=".vista.Registro"
     android:orientation="vertical"
     android:background="@color/colorPrimaryDark">
 
@@ -17,29 +16,29 @@
 
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:layout_marginTop="30dp"
-                    android:layout_alignParentTop="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:layout_alignParentTop="true">
 
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="100dp"
-                        android:layout_height="70dp"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_cloud_upload_black_24dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="APP NAME"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:textSize="22sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorWhite"/>
-                </LinearLayout>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_cloud_upload_black_24dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="APP NAME"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"/>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -52,7 +51,7 @@
             android:weightSum="2">
 
             <EditText
-                android:id="@+id/etusername"
+                android:id="@+id/etusernameRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/no_background"
@@ -72,7 +71,7 @@
             </View>
 
             <EditText
-                android:id="@+id/etpassword"
+                android:id="@+id/etpasswordRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:background="@drawable/no_background"
@@ -85,31 +84,17 @@
                 android:textSize="16dp" />
 
             <Button
-                android:id="@+id/btnLogin"
+                android:id="@+id/btnLoginRegistro"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button_style_red"
-                android:text="Entrar"
+                android:text="Registrame"
                 android:textColor="@color/colorWhite" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:text="Has olvidado tu contraseña?"
-                android:textColor="@color/colorWhite" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:id="@+id/tvRegistro"
-                android:text="Soy nuevo, quiero registrarme"
-                android:textColor="@color/colorAccent"
-                android:textStyle="bold" />
+
+
 
         </LinearLayout>
 
