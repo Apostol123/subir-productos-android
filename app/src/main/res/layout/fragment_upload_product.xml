@@ -1,14 +1,264 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".vista.UploadProduct">
+    tools:context=".vista.UploadProduct"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Upload Product" />
+        android:orientation="vertical">
 
-</FrameLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="30dp"
+            android:layout_alignParentTop="true">
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_unarchive_black_24dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Subir nuevo Producto"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorWhite"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="40dp"
+            android:orientation="vertical"
+            android:weightSum="2">
+
+            <EditText
+                android:id="@+id/etNombreProducto"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/no_background"
+                android:hint="Nombre"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorOffWhite"
+                android:textSize="16dp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorWhite">
+
+
+            </View>
+
+            <EditText
+                android:id="@+id/etDescripcionProducto"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/no_background"
+                android:hint="Descripcion"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorOffWhite"
+                android:textSize="16dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorWhite">
+
+
+            </View>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Varias Tarifas?"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="@color/colorOffWhite"
+                    android:textSize="16dp" />
+                <CheckBox
+                    android:id="@+id/checkbtnTarifasProducto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="@drawable/no_background"
+                    android:hint="Si"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="@color/colorOffWhite"
+                    android:textSize="16dp" />
+
+
+            </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorWhite">
+
+
+
+            </View>
+
+            <EditText
+                android:id="@+id/etTarifasProducto"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/no_background"
+                android:hint="Numero de Tarifas"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorOffWhite"
+                android:textSize="16dp"
+                android:visibility="gone"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorWhite"/>
+
+            <EditText
+                android:id="@+id/etPrecioProducto"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/no_background"
+                android:hint="Precio"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:textColor="@color/colorWhite"
+                android:textColorHint="@color/colorOffWhite"
+                android:textSize="16dp" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/colorWhite"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Varios Atributos?"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="@color/colorOffWhite"
+                    android:textSize="16dp" />
+                <CheckBox
+                    android:id="@+id/checkbtnAtributosProducto"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:background="@drawable/no_background"
+                    android:hint="Si"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="@color/colorOffWhite"
+                    android:textSize="16dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorWhite"/>
+
+                <EditText
+                    android:id="@+id/etVariosAtributosProducto"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/no_background"
+                    android:hint="Numero de Tarifas"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="@color/colorOffWhite"
+                    android:textSize="16dp"
+                    android:visibility="gone"/>
+            </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Seleccionar Foto"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16dp"
+                        android:id="@+id/tvSeleccionarFoto"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/colorWhite"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ivfotoProducto"
+                    />
+
+
+
+
+
+
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/btnSubirProducto"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_style_red"
+                android:text="Subir Producto"
+                android:textColor="@color/colorWhite" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="Tienes Dudas?"
+                android:textColor="@color/colorWhite" />
+
+
+
+        </LinearLayout>
+
+
+
+
+    </LinearLayout>
+
+</ScrollView >
