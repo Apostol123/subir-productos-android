@@ -1,10 +1,7 @@
-package com.example.subirproductosamitienda.Recurosos;
+package com.example.subirproductosamitienda.Recursos;
 
 import android.os.Build;
-import android.service.autofill.RegexValidator;
 import android.text.Editable;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.FragmentManager;

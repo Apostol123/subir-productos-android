@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.subirproductosamitienda.R;
-import com.example.subirproductosamitienda.Recurosos.RecursoRecogerDatos;
+import com.example.subirproductosamitienda.Recursos.RecursoRecogerDatos;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;

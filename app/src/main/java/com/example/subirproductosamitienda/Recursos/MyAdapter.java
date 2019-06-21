@@ -1,4 +1,4 @@
-package com.example.subirproductosamitienda.vista;
+package com.example.subirproductosamitienda.Recursos;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,9 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.subirproductosamitienda.R;
-import com.example.subirproductosamitienda.Recurosos.RecursoRecogerDatos;
 import com.example.subirproductosamitienda.model.MyItem;
 import com.example.subirproductosamitienda.Interface.onCardItemClickListener;
+import com.example.subirproductosamitienda.vista.UploadProduct;
 
 import java.util.List;
 
@@ -43,7 +43,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
             public void onCardItemViewListener(View view, int position) {
                 //start activity
                 switch (position){
-                    case 0:  RecursoRecogerDatos.getInstance().getFragmentManager().beginTransaction().replace(R.id.frame_layout, new UploadProduct()).addToBackStack(null).commit();
+                    case 0:  RecursoRecogerDatos.getInstance().getFragmentManager().beginTransaction().replace(R.id.frame_layout, new UploadProduct(),"upload").addToBackStack(null).commit();
                         break;
                 }
             }

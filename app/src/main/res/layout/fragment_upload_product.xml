@@ -92,7 +92,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 >
-                <EditText
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Varias Tarifas?"
@@ -164,7 +164,7 @@
                 android:layout_height="match_parent"
                 android:orientation="horizontal"
                 >
-                <EditText
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Varios Atributos?"
@@ -217,15 +217,19 @@
                         android:textColor="@color/colorAccent"
                         android:textSize="16dp"
                         android:id="@+id/tvSeleccionarFoto"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tomar Foto"
+                        android:paddingLeft="20dp"
+                        android:paddingRight="20dp"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16dp"
+                        android:id="@+id/tvtomar"/>
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorWhite"/>
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/ivfotoProducto"
-                    />
 
 
 
@@ -233,6 +237,15 @@
 
 
             </LinearLayout>
+            <ImageView
+                android:layout_width="196dp"
+                android:layout_height="226dp"
+                android:id="@+id/ivfotoProducto"
+                android:layout_gravity="center_horizontal"
+                android:visibility="gone"
+
+                />
+
 
 
             <Button

@@ -12,8 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.subirproductosamitienda.R;
-import com.example.subirproductosamitienda.Recurosos.RecursoRecogerDatos;
-import com.example.subirproductosamitienda.Recurosos.SpaceItemDecoration;
+import com.example.subirproductosamitienda.Recursos.MyAdapter;
+import com.example.subirproductosamitienda.Recursos.RecursoRecogerDatos;
+import com.example.subirproductosamitienda.Recursos.SpaceItemDecoration;
 import com.example.subirproductosamitienda.model.MyItem;
 
 import java.util.ArrayList;
@@ -77,7 +78,7 @@ public class MainMenuFragment extends Fragment {
 
     private void initData() {
         itemList = new ArrayList<>();
-        itemList.add(new MyItem(R.drawable.dar_de_alta_producto,"Dar"));
+        itemList.add(new MyItem(R.drawable.dar_de_alta_producto,"Dar de Alta Productos"));
         itemList.add(new MyItem(R.drawable.dar_de_alta_producto,"Dar"));
         itemList.add(new MyItem(R.drawable.dar_de_alta_producto,"Dar"));
         itemList.add(new MyItem(R.drawable.dar_de_alta_producto,"Dar"));

@@ -1,8 +1,6 @@
-package com.example.subirproductosamitienda.Recurosos;
+package com.example.subirproductosamitienda.Recursos;
 
-import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 
 public interface RecogerDatosMetodos {
 
