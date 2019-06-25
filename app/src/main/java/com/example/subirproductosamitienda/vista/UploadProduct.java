@@ -75,7 +75,9 @@ public class UploadProduct extends Fragment {
         private EditText precioTarifasPersonalizdas;
         private TextWatcher textWatcherTarifas;
         private   LinearLayout linearLayoutTarifas;
-    private   LinearLayout linearLayoutPreciosTarifas;
+        private   LinearLayout linearLayoutPreciosTarifas;
+        private static final int ID_editTextPrecioTarifas=301;
+    private static final int ID_editTextAtributos=301;
 
     private Bitmap mImageBitmap;
     private EditText getEditTextPrecioTarifas;
@@ -100,6 +102,10 @@ public class UploadProduct extends Fragment {
         return  view;
     }
 
+    /**
+     * Inicia los campos predefinidos en el layout
+     * @param view
+     */
     private void initData(View view) {
             seleccionarFoto=view.findViewById(R.id.tvSeleccionarFoto);
             imageView=(ImageView) view.findViewById(R.id.ivfotoProducto);
@@ -148,8 +154,14 @@ public class UploadProduct extends Fragment {
     }
 
 
-
-
+    /**
+     * Funccion que permite al usuario hacer una foto o escojer
+     * una foto de la galeria del movil
+     * esta foto se guardara en objeto tipo IMAGEVIEW
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode,resultCode,data);
 
@@ -157,7 +169,7 @@ public class UploadProduct extends Fragment {
 
         switch (requestCode){
             case GALLERY_REQUEST_CODE:
-                System.out.println("wen Gallery");
+
                 //data.getData return the content URI for the selected Image
                 Uri selectedImage = data.getData();
                 String[] filePathColumn = { MediaStore.Images.Media.DATA };
@@ -198,8 +210,13 @@ public class UploadProduct extends Fragment {
     }
 
 
-
-
+    /**
+     * Define el TextWatcher para el edit text de tarifas
+     * una una vez indicado el numero de tarifas
+     * se creare con un ciclo for las linea de tarifas indicadas
+     * @param view
+     * @return
+     */
     private TextWatcher setTextChangeListeners(View view){
         TextWatcher textWatcherTarifas = new TextWatcher() {
             @Override
@@ -217,6 +234,7 @@ public class UploadProduct extends Fragment {
             public void afterTextChanged(Editable editable) {
                 if (!editable.toString().equals("")) {
                     int nr_tarifas = Integer.parseInt(editable.toString());
+
 
                     System.out.println("tarifas " + nr_tarifas);
                     for (int i = 0; i < nr_tarifas; i++) {
@@ -248,7 +266,12 @@ public class UploadProduct extends Fragment {
 
     }
 
-
+    /**
+     * Para implementar luego
+     * para los campos de tarifas añadidos dinamicamente
+     * @param view
+     * @return
+     */
     private TextWatcher setTextChangeListenersTarifas(View view) {
         TextWatcher textWatcherTarifas = new TextWatcher() {
             @Override
@@ -266,7 +289,7 @@ public class UploadProduct extends Fragment {
             public void afterTextChanged(Editable editable) {
 
 
-
+                    int idTarifasPersonalizadas=ID_editTextPrecioTarifas+10;
                     precioTarifasPersonalizdas = new EditText(getActivity());
                     precioTarifasPersonalizdas .setHint("Precio tarifa : " + editable.toString());
                     precioTarifasPersonalizdas .setHintTextColor(Color.WHITE);
@@ -287,12 +310,18 @@ public class UploadProduct extends Fragment {
         return textWatcherTarifas;
     }
 
-
+    /**
+     *Añade la el campo para que inidques el nr de tarifas
+     * y quita la posbilidad del precio unico
+     * @param view
+     */
     public void onAddFieldNrTarifas(View view) {
         editTextPrecioProducto.setVisibility(View.INVISIBLE);
         LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.layout_tarifas);
         editTextPrecioTarifas = new EditText(this.getActivity());
+        editTextPrecioTarifas.setId(ID_editTextPrecioTarifas);
         editTextPrecioTarifas.setHint("Indique el numero de tarifas");
+        editTextPrecioTarifas.setHintTextColor(Color.WHITE);
         editTextPrecioTarifas.setTextColor(Color.WHITE);
         linearLayout.addView(editTextPrecioTarifas);
 
