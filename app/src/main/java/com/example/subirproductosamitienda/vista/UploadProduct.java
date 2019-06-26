@@ -76,6 +76,7 @@ public class UploadProduct extends Fragment {
         private TextWatcher textWatcherTarifas;
         private   LinearLayout linearLayoutTarifas;
         private   LinearLayout linearLayoutPreciosTarifas;
+        private CheckBox checkBoxAtributos;
         private static final int ID_editTextPrecioTarifas=301;
     private static final int ID_editTextAtributos=301;
 
@@ -116,6 +117,7 @@ public class UploadProduct extends Fragment {
             mRootLinearLayout = (LinearLayout) view.findViewById(R.id.rootLinearLayout);
             linearLayoutPreciosTarifas=(LinearLayout)view.findViewById(R.id.layout_precios_tarifas);
             editTextPrecioProducto=(EditText)view.findViewById(R.id.etPrecioProducto);
+            checkBoxAtributos=(CheckBox)view.findViewById(R.id.checkbtnAtributosProducto);
 
 
             seleccionarFoto.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +149,18 @@ public class UploadProduct extends Fragment {
 
                             onRemoveView(view);
 
+
+                    }
+                }
+            });
+
+            checkBoxAtributos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    if (b)
+                    {
+
+                    }else {
 
                     }
                 }
