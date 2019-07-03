@@ -12,6 +12,7 @@ import com.example.subirproductosamitienda.vista.LoginScreen;
 import com.example.subirproductosamitienda.vista.MainMenuFragment;
 import com.google.firebase.auth.FirebaseAuth;
 
+
 public class MainActivity extends AppCompatActivity {
 
 

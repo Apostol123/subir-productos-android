@@ -62,27 +62,13 @@ import static com.example.subirproductosamitienda.Logica.Logica_Upload_Product.G
  */
 public class UploadProduct extends Fragment {
 
-        private TextView seleccionarFoto;
-        private TextView tomarFoto;
-        private ImageView imageView;
+
         private Logica_Upload_Product logica_upload_product;
-        private EditText editTextPrecioProducto;
-        private CheckBox tarifas;
-        private EditText editTextTarifasPrducto;
-        private View lineaTarifas;
-        private LinearLayout mRootLinearLayout;
-        private EditText editTextPrecioTarifas;
-        private EditText precioTarifasPersonalizdas;
-        private TextWatcher textWatcherTarifas;
-        private   LinearLayout linearLayoutTarifas;
-        private   LinearLayout linearLayoutPreciosTarifas;
-        private CheckBox checkBoxAtributos;
-        private static final int ID_editTextPrecioTarifas=301;
-    private static final int ID_editTextAtributos=301;
+
+
 
     private Bitmap mImageBitmap;
-    private EditText getEditTextPrecioTarifas;
-
+    private ImageView imageView;
 
 
 
@@ -95,77 +81,16 @@ public class UploadProduct extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
        View view = inflater.inflate(R.layout.fragment_upload_product, container, false);
-       initData(view);
+
        logica_upload_product=new Logica_Upload_Product(this);
+       logica_upload_product.initData(view,imageView);
 
        logica_upload_product.dexterPermission();
 
         return  view;
     }
 
-    /**
-     * Inicia los campos predefinidos en el layout
-     * @param view
-     */
-    private void initData(View view) {
-            seleccionarFoto=view.findViewById(R.id.tvSeleccionarFoto);
-            imageView=(ImageView) view.findViewById(R.id.ivfotoProducto);
-            tomarFoto=view.findViewById(R.id.tvtomar);
-            tarifas=(CheckBox)view.findViewById(R.id.checkbtnTarifasProducto);
-            editTextTarifasPrducto=(EditText)view.findViewById(R.id.etTarifasProducto);
-            lineaTarifas=(View)view.findViewById(R.id.linea_tarifas);
-            mRootLinearLayout = (LinearLayout) view.findViewById(R.id.rootLinearLayout);
-            linearLayoutPreciosTarifas=(LinearLayout)view.findViewById(R.id.layout_precios_tarifas);
-            editTextPrecioProducto=(EditText)view.findViewById(R.id.etPrecioProducto);
-            checkBoxAtributos=(CheckBox)view.findViewById(R.id.checkbtnAtributosProducto);
 
-
-            seleccionarFoto.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                 logica_upload_product.pickFromGallery();
-
-
-                }
-            });
-
-            tomarFoto.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                   logica_upload_product.captureFromCamera();
-                }
-            });
-
-
-            tarifas.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    if (b){
-
-                        onAddFieldNrTarifas(view);
-
-                    }else {
-
-                            onRemoveView(view);
-
-
-                    }
-                }
-            });
-
-            checkBoxAtributos.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    if (b)
-                    {
-
-                    }else {
-
-                    }
-                }
-            });
-    }
 
 
     /**
@@ -198,6 +123,8 @@ public class UploadProduct extends Fragment {
                 cursor.close();
                 // Set the Image in ImageView after decoding the String
 
+                        imageView= this.getView().findViewById(R.id.ivfotoProducto);
+
                 imageView.setImageBitmap(BitmapFactory.decodeFile(imgDecodableString));
                 if (imageView.getDrawable()!=null){
                     imageView.setVisibility(View.VISIBLE);
@@ -210,9 +137,11 @@ public class UploadProduct extends Fragment {
                 try {
                     Toast.makeText(getContext(),"CAMERA",Toast.LENGTH_SHORT).show();
                     mImageBitmap = MediaStore.Images.Media.getBitmap(this.getActivity().getContentResolver(), Uri.parse(logica_upload_product.getCameraFilePath()));
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                imageView= this.getView().findViewById(R.id.ivfotoProducto);
                 imageView.setImageBitmap(mImageBitmap);
                 if (imageView.getDrawable()!=null){
                     imageView.setVisibility(View.VISIBLE);
@@ -224,149 +153,11 @@ public class UploadProduct extends Fragment {
     }
 
 
-    /**
-     * Define el TextWatcher para el edit text de tarifas
-     * una una vez indicado el numero de tarifas
-     * se creare con un ciclo for las linea de tarifas indicadas
-     * @param view
-     * @return
-     */
-    private TextWatcher setTextChangeListeners(View view){
-        TextWatcher textWatcherTarifas = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void afterTextChanged(Editable editable) {
-                if (!editable.toString().equals("")) {
-                    int nr_tarifas = Integer.parseInt(editable.toString());
-
-
-                    System.out.println("tarifas " + nr_tarifas);
-                    for (int i = 0; i < nr_tarifas; i++) {
-
-                        editTextPrecioTarifas = new EditText(getActivity());
-                        editTextPrecioTarifas.setHint("Tarifa nr: " + (i+1));
-                        editTextPrecioTarifas.setHintTextColor(Color.WHITE);
-                        editTextPrecioTarifas.setTextColor(Color.WHITE);
-                        linearLayoutPreciosTarifas.addView(editTextPrecioTarifas);
-
-
-                        View linea = new View(getActivity());
-                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
-                        linea.setLayoutParams(params);
-                        linea.setBackgroundColor(Color.WHITE);
-                        linearLayoutPreciosTarifas.addView(linea);
-                    }
-                }else {
-                    linearLayoutPreciosTarifas.removeAllViews();
-                }
 
 
 
-            }
-        };
 
 
-        return textWatcherTarifas;
-
-    }
-
-    /**
-     * Para implementar luego
-     * para los campos de tarifas añadidos dinamicamente
-     * @param view
-     * @return
-     */
-    private TextWatcher setTextChangeListenersTarifas(View view) {
-        TextWatcher textWatcherTarifas = new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void afterTextChanged(Editable editable) {
-
-
-                    int idTarifasPersonalizadas=ID_editTextPrecioTarifas+10;
-                    precioTarifasPersonalizdas = new EditText(getActivity());
-                    precioTarifasPersonalizdas .setHint("Precio tarifa : " + editable.toString());
-                    precioTarifasPersonalizdas .setHintTextColor(Color.WHITE);
-                    precioTarifasPersonalizdas .setTextColor(Color.WHITE);
-                    linearLayoutPreciosTarifas.addView(  precioTarifasPersonalizdas );
-
-                    View linea = new View(getActivity());
-                    LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
-                    linea.setLayoutParams(params);
-                    linea.setBackgroundColor(Color.WHITE);
-                    linearLayoutPreciosTarifas.addView(linea);
-
-
-            }
-
-
-        };
-        return textWatcherTarifas;
-    }
-
-    /**
-     *Añade la el campo para que inidques el nr de tarifas
-     * y quita la posbilidad del precio unico
-     * @param view
-     */
-    public void onAddFieldNrTarifas(View view) {
-        editTextPrecioProducto.setVisibility(View.INVISIBLE);
-        LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.layout_tarifas);
-        editTextPrecioTarifas = new EditText(this.getActivity());
-        editTextPrecioTarifas.setId(ID_editTextPrecioTarifas);
-        editTextPrecioTarifas.setHint("Indique el numero de tarifas");
-        editTextPrecioTarifas.setHintTextColor(Color.WHITE);
-        editTextPrecioTarifas.setTextColor(Color.WHITE);
-        linearLayout.addView(editTextPrecioTarifas);
-
-        View linea=new View(this.getActivity());
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT,1);
-        linea.setLayoutParams(params);
-      linea.setBackgroundColor(Color.WHITE);
-        linearLayout.addView(linea);
-
-        editTextPrecioTarifas.addTextChangedListener(setTextChangeListeners(view));
-
-
-    }
-
-    public void onAddField(View view) {
-        LinearLayout linearLayout = (LinearLayout) view.findViewById(R.id.layout_tarifas);
-        EditText editText = new EditText(this.getActivity());
-        editText.setText("tarifa");
-        linearLayout.addView(editText);
-    }
-
-
-        public void onRemoveView(View view){
-            LinearLayout linearLayout=view.findViewById(R.id.layout_tarifas);
-           linearLayout.removeAllViews();
-          linearLayoutPreciosTarifas.removeAllViews();
-            editTextPrecioProducto.setVisibility(View.VISIBLE);
-
-
-
-        }
 
 
 

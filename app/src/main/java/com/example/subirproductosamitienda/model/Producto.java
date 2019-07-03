@@ -9,6 +9,10 @@ public class Producto {
     private int precio;
     private ArrayList<String> atributos;
 
+    public Producto() {
+
+    }
+
     public Producto(String nombre, String descripcion, String url_img, int precio, ArrayList<String> atributos) {
         this.nombre = nombre;
         this.descripcion = descripcion;

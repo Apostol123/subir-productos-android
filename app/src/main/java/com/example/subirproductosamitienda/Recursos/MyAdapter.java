@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.subirproductosamitienda.R;
 import com.example.subirproductosamitienda.model.MyItem;
 import com.example.subirproductosamitienda.Interface.onCardItemClickListener;
+import com.example.subirproductosamitienda.vista.ProvaPost;
 import com.example.subirproductosamitienda.vista.UploadProduct;
 
 import java.util.List;
@@ -44,6 +45,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder> {
                 //start activity
                 switch (position){
                     case 0:  RecursoRecogerDatos.getInstance().getFragmentManager().beginTransaction().replace(R.id.frame_layout, new UploadProduct(),"upload").addToBackStack(null).commit();
+                        break;
+                    case 1:  RecursoRecogerDatos.getInstance().getFragmentManager().beginTransaction().replace(R.id.frame_layout, new ProvaPost(),"provaPost").addToBackStack(null).commit();
                         break;
                 }
             }
