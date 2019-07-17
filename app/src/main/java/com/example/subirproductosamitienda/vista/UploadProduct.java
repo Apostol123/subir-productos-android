@@ -83,7 +83,7 @@ public class UploadProduct extends Fragment {
        View view = inflater.inflate(R.layout.fragment_upload_product, container, false);
 
        logica_upload_product=new Logica_Upload_Product(this);
-       logica_upload_product.initData(view,imageView);
+       logica_upload_product.initData(view);
 
        logica_upload_product.dexterPermission();
 

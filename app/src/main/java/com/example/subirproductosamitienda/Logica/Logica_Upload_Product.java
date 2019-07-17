@@ -43,6 +43,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -68,6 +69,7 @@ public class Logica_Upload_Product {
     private EditText nombreProducto;
     private EditText editTextDescricionProducto;
     private ImageView imageView;
+    private EditText editTextAtributos;
 
 
     private EditText getEditTextPrecioTarifas;
@@ -231,6 +233,7 @@ public class Logica_Upload_Product {
         subirProducto=(Button)view.findViewById(R.id.btnSubirProducto);
         nombreProducto=view.findViewById(R.id.etNombreProducto);
         editTextDescricionProducto=view.findViewById(R.id.etDescripcionProducto);
+        editTextDescricionProducto=view.findViewById(R.id.etVariosAtributosProducto);
 
 
 
@@ -289,6 +292,9 @@ public class Logica_Upload_Product {
                 producto.setDescripcion(editTextDescricionProducto.getText().toString());
                 producto.setPrecio((Integer.parseInt(editTextPrecioProducto.getText().toString())));
                 producto.setUrl_img(sendImageToDatabase());
+                ArrayList<String> atributos = new ArrayList<>();
+                atributos.add(editTextAtributos.getText().toString());
+                producto.setAtributos(atributos);
 
             }
         });

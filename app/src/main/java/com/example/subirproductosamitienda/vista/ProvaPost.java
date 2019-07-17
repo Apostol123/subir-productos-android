@@ -10,8 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.subirproductosamitienda.Logica.JsonPlaceHolderAPi;
-import com.example.subirproductosamitienda.Logica.Post;
+import com.example.subirproductosamitienda.Logica.UserQuerytoRestApi;
+import com.example.subirproductosamitienda.Logica.Retorifit_Singleton_Connection;
+import com.example.subirproductosamitienda.model.User;
 import com.example.subirproductosamitienda.R;
 
 import java.util.List;
@@ -19,8 +20,6 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,28 +41,25 @@ public class ProvaPost extends Fragment {
 
         textView=view.findViewById(R.id.provaPost);
 
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://jsonplaceholder.typicode.com/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build();
 
-        JsonPlaceHolderAPi jsonPlaceHolderAPi = retrofit.create(JsonPlaceHolderAPi.class);
 
-        Call<List<Post>> call=jsonPlaceHolderAPi.getPosts();
+        UserQuerytoRestApi userQuerytoRestApi = Retorifit_Singleton_Connection.getRetorifit_Singleton_Connection().getRetrofitConnection().create(UserQuerytoRestApi.class);
 
-        call.enqueue(new Callback<List<Post>>() {
+        Call<List<User>> call= userQuerytoRestApi.getUsers();
+
+        call.enqueue(new Callback<List<User>>() {
             @Override
-            public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
+            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 if (!response.isSuccessful()){
                     textView.setText("Code: "+response.code());
                     return;
                 }
 
-                List<Post> posts=response.body();
+                List<User> users=response.body();
 
-                for (Post post:posts){
+                for (User user:users){
                     String content="";
-                    content+="id: "+post.getText() +"\n";
+                    content+="FIRSTNAME "+user.getFirstName() +"\n";
                     textView.append(content);
                 }
 
@@ -71,7 +67,7 @@ public class ProvaPost extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<List<Post>> call, Throwable t) {
+            public void onFailure(Call<List<User>> call, Throwable t) {
                     textView.setText(t.getMessage());
             }
         });
