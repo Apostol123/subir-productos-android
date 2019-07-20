@@ -80,7 +80,7 @@ public class MainMenuFragment extends Fragment {
         itemList = new ArrayList<>();
         itemList.add(new MyItem(R.drawable.dar_de_alta_producto,"Dar de Alta Productos"));
         itemList.add(new MyItem(R.drawable.dar_de_alta_producto,"Prova Posts"));
-        itemList.add(new MyItem(R.drawable.dar_de_alta_producto,"Dar"));
+        itemList.add(new MyItem(R.drawable.dar_de_alta_producto,"Cerrar Session"));
         itemList.add(new MyItem(R.drawable.dar_de_alta_producto,"Dar"));
         itemList.add(new MyItem(R.drawable.dar_de_alta_producto,"Dar"));
         itemList.add(new MyItem(R.drawable.dar_de_alta_producto,"Dar"));

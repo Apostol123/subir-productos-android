@@ -4,7 +4,6 @@ package com.example.subirproductosamitienda.vista;
 import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 
@@ -18,11 +17,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.subirproductosamitienda.Logica.Retorifit_Singleton_Connection;
+import com.example.subirproductosamitienda.Logica.UserQuerytoRestApi;
 import com.example.subirproductosamitienda.R;
 import com.example.subirproductosamitienda.Recursos.RecursoRecogerDatos;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.mobsandgeeks.saripaar.Validator;
 
@@ -82,6 +80,9 @@ public class LoginScreen extends Fragment {
             public void onClick(View view) {
 
                 if (passCorrecto && usuarioCorrecto) {
+
+                    UserQuerytoRestApi userQuerytoRestApi = Retorifit_Singleton_Connection.getRetorifit_Singleton_Connection().getRetrofitConnectionWithToken().create(UserQuerytoRestApi.class);
+
 
 
                     RecursoRecogerDatos.getInstance().setCurrentUser(firebaseAuth.getCurrentUser());

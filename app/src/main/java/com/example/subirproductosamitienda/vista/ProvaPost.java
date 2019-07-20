@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.subirproductosamitienda.Logica.UserQuerytoRestApi;
 import com.example.subirproductosamitienda.Logica.Retorifit_Singleton_Connection;
@@ -43,9 +44,32 @@ public class ProvaPost extends Fragment {
 
 
 
-        UserQuerytoRestApi userQuerytoRestApi = Retorifit_Singleton_Connection.getRetorifit_Singleton_Connection().getRetrofitConnection().create(UserQuerytoRestApi.class);
+
+
+        UserQuerytoRestApi userQuerytoRestApi = Retorifit_Singleton_Connection.getRetorifit_Singleton_Connection().getRetrofitConnectionWithToken().create(UserQuerytoRestApi.class);
+
 
         Call<List<User>> call= userQuerytoRestApi.getUsers();
+        User user = new User();
+        user.setFirstName("prova post");
+        user.setSecondName("apellido prova post");
+        user.setId("id1");
+        userQuerytoRestApi.addUser(user);
+
+        Call<User> closeSession=userQuerytoRestApi.closeSessionId();
+        closeSession.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                Toast.makeText(getContext(),"CLOSE SESSION",Toast.LENGTH_LONG);
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+
+            }
+        });
+
+
 
         call.enqueue(new Callback<List<User>>() {
             @Override
@@ -59,7 +83,9 @@ public class ProvaPost extends Fragment {
 
                 for (User user:users){
                     String content="";
-                    content+="FIRSTNAME "+user.getFirstName() +"\n";
+                    content+="FIRSTNAME "+user.getFirstName() +"\n" +
+                            "SECONDNAME "+user.getSecondName() +"\n" +
+                            "SESSION ID  "+ user.getSessionId() +"\n";
                     textView.append(content);
                 }
 
@@ -71,6 +97,7 @@ public class ProvaPost extends Fragment {
                     textView.setText(t.getMessage());
             }
         });
+
 
 
         return view;

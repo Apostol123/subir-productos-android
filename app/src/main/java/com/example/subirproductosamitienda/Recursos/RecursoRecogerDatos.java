@@ -1,11 +1,13 @@
 package com.example.subirproductosamitienda.Recursos;
 
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.text.Editable;
 
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.subirproductosamitienda.Logica.Retorifit_Singleton_Connection;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -15,6 +17,7 @@ public class RecursoRecogerDatos {
 
     private static final Pattern sPattern
             = Pattern.compile("[a-zA-Z]");
+    public  SharedPreferences sharedPreferences;
 
     private  static final  Pattern emailPattern = Pattern.compile("^\\w+([-+.']\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$");
 
@@ -69,4 +72,11 @@ public class RecursoRecogerDatos {
         return emailPattern.matcher(editable.toString()).matches();
         }
 
+    public SharedPreferences getSharedPreferences() {
+        return sharedPreferences;
+    }
+
+    public void setSharedPreferences(SharedPreferences sharedPreferences) {
+        this.sharedPreferences = sharedPreferences;
+    }
 }

@@ -5,13 +5,14 @@ import com.google.gson.annotations.SerializedName;
 public class User {
 
     String id;
-
+    String sessionId;
     String username;
     String password;
     @SerializedName("body")
     String firstName;
     String secondName;
     String email;
+    String token ;
 
 
 
@@ -26,11 +27,13 @@ public class User {
         this.email = email;
     }
 
-    public User(String id, String username, String password) {
+    public User(String id, String sessionId, String username, String password,String token) {
         super();
         this.id = id;
         this.username = username;
         this.password = password;
+        this.sessionId=sessionId;
+        this.token=token;
 
     }
 
@@ -73,5 +76,21 @@ public class User {
     }
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(String sessionId) {
+        this.sessionId = sessionId;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
     }
 }
